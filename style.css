@@ -1,0 +1,36 @@
+body {
+    overflow-x: hidden;
+}
+
+.greeting-card {
+    width: 100%;
+}
+
+.animation-base {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(74649077-Happy-Birthday-Seamless-Pattern-Vector-Design-for-birthday-background-Stock-Vector.jpg);
+    overflow: hidden;
+}
+
+.balloon {
+    width: 15vw;
+    position: relative;
+    top: 100vh;
+}
+
+#large {
+    width: 40vw;
+}
+
+.balloon-2 {
+    left: 7vw;
+}
+
+.balloon-3 {
+    left: 16vw;
+}
+
+.balloon-3 {
+    left: 26vw;
+}

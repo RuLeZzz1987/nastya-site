@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Nastya Kulachok</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<div class="animation-base"
+     id="root">
+</div>
+
+<img src="62pXuoSjqNA.jpg"
+     class="greeting-card">
+
+
+<img src="-rNDTmNMRTI.jpg"
+     class="greeting-card">
+
+
+<img src="DYsvIG2tw_0.jpg"
+     class="greeting-card">
+
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@6/promise.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
+
+
+<script>
+    function randomListEl(list) {
+        return list[Math.floor(Math.random() * list.length)];
+    }
+
+    window.onload = function () {
+        const root = document.getElementById('root');
+        const imgsList = ['balloons/balloons-1.png', 'balloons/balloons-2.png'];
+        const count = Math.floor(Math.random() * 10 + 10);
+
+        function largeBalloon() {
+            const balloon = new Image();
+            balloon.src = 'balloons/balloon-large.png';
+            balloon.id = 'large';
+            balloon.style.left = '4vw';
+            balloon.classList.add('balloon');
+            let resolve;
+            const promise = new Promise(ok => {resolve = ok});
+            balloon.onload = function() {
+                resolve();
+            };
+            root.appendChild(balloon);
+            imgsLoadedPromises.push(promise);
+        }
+
+
+        const imgsLoadedPromises = [];
+        for (let i = 0; i < count; i++) {
+            const img = new Image();
+            img.src = randomListEl(imgsList);
+            img.id = `balloon-${i}`;
+            img.classList.add('balloon');
+            let resolve;
+            const promise = new Promise(ok => {
+                resolve = ok;
+            });
+            imgsLoadedPromises.push(promise);
+            img.onload = function () {
+                resolve();
+            };
+            img.style.left = `${Math.floor(Math.random() * 17)}vw`;
+            root.appendChild(img);
+        }
+
+        largeBalloon();
+
+        Promise.all(imgsLoadedPromises).then(() => {
+            for (let i = 0; i < count - 1; i++) {
+                TweenLite.to(`#balloon-${i}`, Math.floor(Math.random() * 5 + 5), {top: '-100vh'});
+            }
+
+            TweenLite.to(`#large`, 10, {top: '-1000px'});
+        });
+    };
+
+</script>
+</body>
+</html>
