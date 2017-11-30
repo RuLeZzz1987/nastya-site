@@ -68,53 +68,70 @@ body {
 }
 
 .greet-message span.char1 {
+    color: mediumpurple;
     transform: rotate(-16deg);
 }
 
 .greet-message span.char2 {
     transform: rotate(-5deg);
+    color: aqua;
 }
 
 .greet-message span.char3 {
     transform: rotate(6deg);
+    color: magenta;
 }
 
 .greet-message span.char4 {
     transform: rotate(17deg);
+    color: darkslateblue;
 }
 
 .greet-message span.char5 {
     transform: rotate(28deg);
+    color: dodgerblue;
 }
 
 .greet-message-2 span.char1 {
     transform: rotate(-18deg);
+    color: orange;
 }
 
 .greet-message-2 span.char2 {
     transform: rotate(-8deg);
+    color: crimson;
 }
 
 .greet-message-2 span.char3 {
     transform: rotate(-1deg);
+    color: indigo;
 }
 
 .greet-message-2 span.char4 {
     transform: rotate(8deg);
+    color: green;
 }
 
 .greet-message-2 span.char5 {
     transform: rotate(16deg);
+    color: darkblue;
 }
 
 .greet-message-2 span.char6 {
     transform: rotate(26deg);
+    color: maroon;
 }
 
 .greet-message-2 span.char7 {
     transform: rotate(36deg);
+    color: orangered;
 }
 
 .greet-message-2 span.char8 {
     transform: rotate(46deg);
+    color: darkturquoise;
+}
+
+.root-greet {
+    display: none;
 }

@@ -15,8 +15,10 @@
 </head>
 
 <body>
-<div class="greet-message">HAPPY</div>
-<div class="greet-message-2">BIRTHDAY</div>
+<div class="root-greet">
+    <div class="greet-message">HAPPY</div>
+    <div class="greet-message-2">BIRTHDAY</div>
+</div>
 <div class="animation-base"
      id="root">
 </div>
@@ -61,8 +63,10 @@
             balloon.style.left = `${Math.floor((root.clientWidth - balloon.clientWidth) / 2)}px`;
             balloon.classList.add('balloon');
             let resolve;
-            const promise = new Promise(ok => {resolve = ok});
-            balloon.onload = function() {
+            const promise = new Promise(ok => {
+                resolve = ok
+            });
+            balloon.onload = function () {
                 resolve();
             };
             imgsLoadedPromises.push(promise);
@@ -98,12 +102,13 @@
         });
 
         function showGift() {
+            $('.root-greet').show();
             const gift = new Image();
             root.appendChild(gift);
             gift.src = 'gift-box.png';
             gift.classList.add('gift');
             gift.id = 'gift-box';
-            gift.style.left = `${Math.floor((root.clientWidth - gift.clientWidth)/ 2)}px`;
+            gift.style.left = `${Math.floor((root.clientWidth - gift.clientWidth) / 2)}px`;
             TweenLite.to(gift, 4, {top: Math.floor((root.clientHeight - gift.clientHeight) / 2), ease: Bounce.easeOut});
         }
 
