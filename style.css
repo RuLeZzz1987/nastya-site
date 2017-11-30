@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Balloony';
-    src: url('./BalloonyDemo.ttf')  format('truetype'); /* Safari, Android, iOS */
+    src: url('./Kingthings.TTF')  format('truetype'); /* Safari, Android, iOS */
 }
 
 body {
@@ -50,4 +50,71 @@ body {
 
 .balloon-3 {
     left: 30vw;
+}
+
+.greet-message span, .greet-message-2 span {
+    width: 12vw;
+    font-size: 12vw;
+    height: 770px;
+    position: absolute;
+    left: 250px;
+    top: 125px;
+    transform-origin: bottom center;
+}
+
+
+.greet-message-2 span {
+    top: 300px;
+}
+
+.greet-message span.char1 {
+    transform: rotate(-16deg);
+}
+
+.greet-message span.char2 {
+    transform: rotate(-5deg);
+}
+
+.greet-message span.char3 {
+    transform: rotate(6deg);
+}
+
+.greet-message span.char4 {
+    transform: rotate(17deg);
+}
+
+.greet-message span.char5 {
+    transform: rotate(28deg);
+}
+
+.greet-message-2 span.char1 {
+    transform: rotate(-18deg);
+}
+
+.greet-message-2 span.char2 {
+    transform: rotate(-8deg);
+}
+
+.greet-message-2 span.char3 {
+    transform: rotate(-1deg);
+}
+
+.greet-message-2 span.char4 {
+    transform: rotate(8deg);
+}
+
+.greet-message-2 span.char5 {
+    transform: rotate(16deg);
+}
+
+.greet-message-2 span.char6 {
+    transform: rotate(26deg);
+}
+
+.greet-message-2 span.char7 {
+    transform: rotate(36deg);
+}
+
+.greet-message-2 span.char8 {
+    transform: rotate(46deg);
 }
