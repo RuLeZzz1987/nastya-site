@@ -1,5 +1,16 @@
+@font-face {
+    font-family: 'Balloony';
+    src: url('./BalloonyDemo.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
 body {
     overflow-x: hidden;
+    font-family: 'Balloony', sans-serif;
+}
+
+.test {
+
+    font-size: 24px;
 }
 
 .greeting-card {
@@ -15,8 +26,14 @@ body {
 
 .balloon {
     width: 15vw;
-    position: relative;
+    position: absolute;
     top: 100vh;
+}
+
+.gift {
+    width: 40vw;
+    position: absolute;
+    top: -50vh;
 }
 
 #large {
@@ -28,9 +45,9 @@ body {
 }
 
 .balloon-3 {
-    left: 16vw;
+    left: 20vw;
 }
 
 .balloon-3 {
-    left: 26vw;
+    left: 30vw;
 }

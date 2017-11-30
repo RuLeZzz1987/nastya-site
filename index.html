@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+<div class="test">HAPPY BIRTHDAY</div>
 <div class="animation-base"
      id="root">
 </div>
@@ -31,9 +31,13 @@
 <img src="DYsvIG2tw_0.jpg"
      class="greeting-card">
 
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@6/promise.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+<script src="lettering.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
 
@@ -50,16 +54,16 @@
 
         function largeBalloon() {
             const balloon = new Image();
+            root.appendChild(balloon);
             balloon.src = 'balloons/balloon-large.png';
             balloon.id = 'large';
-            balloon.style.left = '4vw';
+            balloon.style.left = `${Math.floor((root.clientWidth - balloon.clientWidth) / 2)}px`;
             balloon.classList.add('balloon');
             let resolve;
             const promise = new Promise(ok => {resolve = ok});
             balloon.onload = function() {
                 resolve();
             };
-            root.appendChild(balloon);
             imgsLoadedPromises.push(promise);
         }
 
@@ -78,19 +82,32 @@
             img.onload = function () {
                 resolve();
             };
-            img.style.left = `${Math.floor(Math.random() * 17)}vw`;
+            img.style.left = `${Math.floor(Math.random() * root.clientWidth)}px`;
             root.appendChild(img);
         }
 
         largeBalloon();
 
         Promise.all(imgsLoadedPromises).then(() => {
-            for (let i = 0; i < count - 1; i++) {
+            for (let i = 0; i < count; i++) {
                 TweenLite.to(`#balloon-${i}`, Math.floor(Math.random() * 5 + 5), {top: '-100vh'});
             }
 
-            TweenLite.to(`#large`, 10, {top: '-1000px'});
+            TweenLite.to(`#large`, 10, {top: '-1000px', onComplete: showGift});
         });
+
+        function showGift() {
+            const gift = new Image();
+            root.appendChild(gift);
+            gift.src = 'gift-box.png';
+            gift.classList.add('gift');
+            gift.id = 'gift-box';
+            gift.style.left = `${Math.floor((root.clientWidth - gift.clientWidth)/ 2)}px`;
+            TweenLite.to(gift, 4, {top: Math.floor((root.clientHeight - gift.clientHeight) / 2), ease: Bounce.easeOut});
+        }
+
+
+        $(".test").lettering();
     };
 
 </script>

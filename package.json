@@ -1,0 +1,28 @@
+{
+  "name": "nastya-kulachok",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RuLeZzz1987/nastya-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RuLeZzz1987/nastya-site/issues"
+  },
+  "homepage": "https://github.com/RuLeZzz1987/nastya-site#readme",
+  "devDependencies": {
+    "git-scripts": "^0.2.1",
+    "surge": "^0.19.0"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "surge --project ./ --domain nastya-kulachok.me"
+    }
+  }
+}
