@@ -1,11 +1,38 @@
 @font-face {
     font-family: 'Balloony';
-    src: url('./Kingthings.TTF')  format('truetype'); /* Safari, Android, iOS */
+    src: url('./fonts/subset-Balloony-Regular.woff2') format('woff2'),
+    url('./fonts/subset-Balloony-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Astakhov Access Degree';
+    src: url('./fonts/AstakhovAccessDegree.woff2') format('woff2'),
+    url('./fonts/AstakhovAccessDegree.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sniglet';
+    src: url('./fonts/Sniglet.woff2') format('woff2'),
+    url('./fonts/Sniglet.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FAD Omega Birthday Bats';
+    src: url('./fonts/FADOmegaBirthdayBats.woff2') format('woff2'),
+    url('./fonts/FADOmegaBirthdayBats.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
     overflow-x: hidden;
-    font-family: 'Balloony', sans-serif;
+    font-family: 'Sniglet', sans-serif;
 }
 
 .test {
@@ -20,7 +47,7 @@ body {
 .animation-base {
     width: 100vw;
     height: 100vh;
-    background-image: url(74649077-Happy-Birthday-Seamless-Pattern-Vector-Design-for-birthday-background-Stock-Vector.jpg);
+    background-image: url('./img/root-bg.jpg');
     overflow: hidden;
 }
 
@@ -56,9 +83,9 @@ body {
 .greet-message span, .greet-message-2 span {
     width: 12vw;
     font-size: 12vw;
-    height: 770px;
+    height: 390px;
     position: absolute;
-    left: 250px;
+    left: 200px;
     top: 125px;
     transform-origin: bottom center;
 }
@@ -134,5 +161,25 @@ body {
 }
 
 .root-greet {
+    display: none;
+}
+
+h1 {
+    font-family: "Astakhov Access Degree", sans-serif;
+    font-size: 32px;
+    padding: 32px;
+    text-align: center;
+    background-image: url('./img/root-bg.jpg');
+    margin: 0;
+    color: lightseagreen;
+}
+
+.nav-elem {
+    color: darkmagenta;
+    font-family: "Astakhov Access Degree", sans-serif;
+    font-size: 32px;
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
     display: none;
 }

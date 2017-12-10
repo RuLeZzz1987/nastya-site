@@ -15,36 +15,46 @@
 </head>
 
 <body>
-<div>
-    <a href="#from-brother">От Брата</a>
-    <a href="#from-grandma">От Бабушки</a>
-    <a href="#from-ma">От Мамы</a>
-</div>
 <div class="root-greet">
     <div class="greet-message">HAPPY</div>
     <div class="greet-message-2">BIRTHDAY</div>
 </div>
 <div class="animation-base"
      id="root">
+
+    <a href="#from-brother" class="nav-elem">От Брата</a>
+    <a href="#from-grandma" class="nav-elem">От Бабушки</a>
+    <a href="#from-ma" class="nav-elem">От Мамы</a>
+    <a href="#from-nastya" class="nav-elem">От Насти</a>
+    <a href="#from-kate" class="nav-elem">От Оли и Кати</a>
 </div>
 
-<img src="62pXuoSjqNA.jpg"
+<h1>От Брата</h1>
+<img src="img/cards/bro.jpg"
      class="greeting-card" id="from-brother">
 
-
-<img src="-rNDTmNMRTI.jpg"
+<h1>От Бабушки</h1>
+<img src="img/cards/granma.jpg"
      class="greeting-card" id="from-grandma">
 
-
-<img src="DYsvIG2tw_0.jpg"
+<h1>От Мамы</h1>
+<img src="img/cards/mom.jpg"
      class="greeting-card" id="from-ma">
+
+<h1>От Насти</h1>
+<img src="img/cards/nastya.jpg"
+  class="greeting-card" id="from-nastya">
+
+<h1>От Кати и Оли</h1>
+<img src="img/cards/kate.jpg"
+  class="greeting-card" id="from-kate">
 
 <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@6/promise.min.js"></script>
-<script src="lettering.js"></script>
+<script src="js/vendor/lettering.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 <script src="node_modules/gsap/src/minified/TimelineMax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
@@ -57,13 +67,13 @@
 
     window.onload = function () {
         const root = document.getElementById('root');
-        const imgsList = ['balloons/balloons-1.png', 'balloons/balloons-2.png'];
+        const imgsList = ['img/balloons/balloons-1.png', 'img/balloons/balloons-2.png'];
         const count = Math.floor(Math.random() * 10 + 10);
 
         function largeBalloon() {
             const balloon = new Image();
             root.appendChild(balloon);
-            balloon.src = 'balloons/balloon-large.png';
+            balloon.src = 'img/balloons/balloon-large.png';
             balloon.id = 'large';
             balloon.style.left = `${Math.floor((root.clientWidth - balloon.clientWidth) / 2)}px`;
             balloon.classList.add('balloon');
@@ -100,21 +110,60 @@
 
         Promise.all(imgsLoadedPromises).then(() => {
             for (let i = 0; i < count; i++) {
-                TweenLite.to(`#balloon-${i}`, Math.floor(Math.random() * 5 + 5), {top: '-100vh'});
+                TweenLite.to(`#balloon-${i}`, Math.floor(Math.random() * 5 + 5), {top: '-100vh', onComplete: () => {
+                  document.querySelector(`#balloon-${i}`).remove();
+                }});
             }
 
-            TweenLite.to(`#large`, 10, {top: '-1000px', onComplete: showGift});
+            TweenLite.to(`#large`, 10, {top: '-1000px', onComplete: () => {
+              document.querySelector(`#large`).remove();
+              showGift();
+            }
+            });
         });
 
         function showGift() {
+
             $('.root-greet').show();
             const gift = new Image();
             root.appendChild(gift);
-            gift.src = 'gift-box.png';
+            gift.src = 'img/gift-box.png';
             gift.classList.add('gift');
             gift.id = 'gift-box';
             gift.style.left = `${Math.floor((root.clientWidth - gift.clientWidth) / 2)}px`;
-            TweenLite.to(gift, 4, {top: Math.floor((root.clientHeight - gift.clientHeight) / 2), ease: Bounce.easeOut});
+            TweenLite.to(gift, 4, {top: Math.floor((root.clientHeight - gift.clientHeight) / 2) + 20, ease: Bounce.easeOut, onComplete: hideLetters});
+        }
+
+        function hideLetters() {
+          const chars = [...document.querySelectorAll('div.greet-message span'),
+            ...document.querySelectorAll('div.greet-message-2 span')];
+          let max = 0;
+          chars.forEach(char => {
+            const direction = randomListEl(['left', 'top']);
+            let px;
+            switch (direction) {
+              case 'top':
+                px = -200;
+                break;
+              case 'left':
+                px = -200;
+                break;
+            }
+
+            const tl = TweenLite.to(char, Math.floor(Math.random() * 5 + 5), { [direction]: px , onComplete: () => {
+              char.remove();
+            }});
+
+            max = max > tl._duration ? max : tl._duration;
+          });
+
+
+          const navs = [...document.querySelectorAll('.nav-elem')];
+
+          TweenLite.from(navs, 5, {scale: 2, delay: max, rotation: 360, transformOrigin: 'center center', ease: Bounce.easeInOut, onStart: () => {
+            $('.nav-elem').css("display", "block");
+          }})
+
         }
 
 

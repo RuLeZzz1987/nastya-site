@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node serve.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/RuLeZzz1987/nastya-site#readme",
   "devDependencies": {
+    "express": "^4.16.2",
     "git-scripts": "^0.2.1",
     "surge": "^0.19.0"
   },
